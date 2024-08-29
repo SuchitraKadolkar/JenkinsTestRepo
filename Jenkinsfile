@@ -46,5 +46,11 @@ pipeline {
                 }
             }
         }
+        post { 
+            always { 
+                echo 'Clean Up action'
+                cleanWs()
+            }
+        }
     }
 }
