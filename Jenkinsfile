@@ -27,6 +27,8 @@ pipeline {
             steps {
                 script {
                     def buildNumber = env.BUILD_NUMBER
+                    sh 'git config --global user.email "suchitrakadolkar2654@gmail.com"'
+                    sh 'git config --global user.name "Suchitra Kadolkar"'
                     sh "git tag -a acds-${buildNumber} -m 'Tagging acds-${buildNumber}'"
                     sh "git push --tags"
                 }
