@@ -14,6 +14,7 @@ pipeline {
         stage('Deploy') {
             steps {
                 echo "Inside Deploy pipeline stage."
+                sh 'mkdir release'
             }
             post { 
                 always {
