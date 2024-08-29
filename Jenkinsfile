@@ -16,12 +16,12 @@ pipeline {
                 echo "Inside Deploy pipeline stage."
                 sh 'mkdir release'
             }
-            post { 
-                always {
-                    echo 'Archiving artifacts'
-                    archiveArtifacts artifacts: 'release/', onlyIfSuccessful: true                     
-                }
-            }
+            // post { 
+            //     always {
+            //         echo 'Archiving artifacts'
+            //         archiveArtifacts artifacts: 'release/', onlyIfSuccessful: true                     
+            //     }
+            // }
         }
         stage('Tag Repo') {
             steps {
