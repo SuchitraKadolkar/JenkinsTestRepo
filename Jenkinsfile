@@ -46,11 +46,11 @@ pipeline {
                     }
                 }
             }
-        }
-        post { 
-            always { 
-                echo 'Clean Up action'
-                cleanWs()
+            post { 
+                always { 
+                    echo 'Clean Up action'
+                    cleanWs()
+                }
             }
         }
     }
