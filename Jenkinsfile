@@ -1,5 +1,8 @@
 pipeline {
     agent any
+    environment {
+        GIT_CREDENTIALS = credentials('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') // Assuming you have stored your PAT in Jenkins credentials with ID 'github-token'
+    }
     stages {
         stage('Build') {
             steps {
@@ -25,9 +28,6 @@ pipeline {
         }
         stage('Tag Repo') {
             steps {
-                environment {
-                    GIT_CREDENTIALS = credentials('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') // Assuming you have stored your PAT in Jenkins credentials with ID 'github-token'
-                }
                 script {
                     def buildNumber = env.BUILD_NUMBER
                     sh 'git config --global user.email "suchitrakadolkar2654@gmail.com"'
