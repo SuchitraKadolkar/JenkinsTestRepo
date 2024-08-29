@@ -1,8 +1,8 @@
 pipeline {
     agent any
-    environment {
-        GIT_CREDENTIALS = credentials('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') // Assuming you have stored your PAT in Jenkins credentials with ID 'github-token'
-    }
+    // environment {
+    //     GIT_CREDENTIALS = credentials('git-token') // Assuming you have stored your PAT in Jenkins credentials with ID 'github-token'
+    // }
     stages {
         stage('Build') {
             steps {
