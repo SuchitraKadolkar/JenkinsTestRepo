@@ -1,57 +1,22 @@
 pipeline {
     agent any
-    // environment {
-    //     GIT_CREDENTIALS = credentials('git-token') // Assuming you have stored your PAT in Jenkins credentials with ID 'github-token'
-    // }
+
     stages {
         stage('Build') {
             steps {
-                sh 'python3 Hello.py'
-            }
-        }
-        stage('Test') {
-            steps {
-                echo "Inside Test pipeline stage."
-            }
-        }
-        stage('Deploy') {
-            steps {
-                echo "Inside Deploy pipeline stage."
-                //sh 'mkdir -p release'
-            }
-            // post { 
-            //     always {
-            //         echo 'Archiving artifacts'
-            //         archiveArtifacts artifacts: 'release/', onlyIfSuccessful: true                     
-            //     }
-            // }
-        }
-        stage('Tag Repo') {
-            steps {
                 script {
-                    //def buildNumber = env.BUILD_NUMBER
-                    //sh 'git config --global user.email "suchitrakadolkar2654@gmail.com"'
-                    //sh 'git config --global user.name "SuchitraKadolkar"'
-                    //sh "git tag -a acds-${buildNumber} -m 'Tagging acds-${buildNumber}'"
-                    //sh "git push --tags"
-                    echo "Inside tag repository"
+                    // Example build steps
+                    sh 'mkdir -p output'
+                    sh 'echo "Build artifact content" > output/artifact.txt'
                 }
             }
         }
-        stage('Description') {
+        stage('Archive') {
             steps {
-                script {
-                    if (env.BRANCH_NAME == 'master') {
-                        currentBuild.description = "Jenkins build"
-                    }
-                }
-            }
-            post { 
-                always { 
-                    echo 'Clean Up action'
-                    cleanWs()
-                }
+                // Archive artifacts with a custom name or structure
+                archiveArtifacts artifacts: 'output/*', allowEmptyArchive: true
             }
         }
     }
 }
+
